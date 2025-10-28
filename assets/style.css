@@ -1,0 +1,132 @@
+/* === Estilo general inspirado en VS Code claro === */
+:root {
+  --bg-color: #f3f3f3;
+  --sidebar-bg: #e8e8e8;
+  --accent-color: #007acc;
+  --text-color: #333;
+  --border-color: #dcdcdc;
+  --font-mono: "Fira Code", "Consolas", monospace;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-mono);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* === Barra superior (para móvil) === */
+.topbar {
+  display: none;
+  background-color: var(--sidebar-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* === Menú lateral === */
+.sidebar {
+  width: 240px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 0.5rem 0;
+}
+
+.sidebar a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+}
+
+.sidebar a:hover {
+  background-color: #dbe9f9;
+}
+
+.sidebar a.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* === Contenido principal === */
+.content {
+  flex: 1;
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+h2 {
+  color: var(--accent-color);
+}
+
+.highlight {
+  background-color: #f8f8f8;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+code {
+  font-family: var(--font-mono);
+  color: #1e1e1e;
+  font-size: 0.95rem;
+  white-space: pre;
+}
+
+/* === Responsive === */
+@media (max-width: 800px) {
+  body {
+    flex-direction: column;
+  }
+
+  .topbar {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 3.2rem;
+    left: -260px;
+    height: calc(100% - 3.2rem);
+    width: 240px;
+    transition: left 0.3s ease;
+    z-index: 100;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+}
